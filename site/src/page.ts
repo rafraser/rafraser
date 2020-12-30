@@ -37,6 +37,7 @@ async function parseFile(filepath: string, contentParser: (raw: string) => strin
     rl.on("line", line => {
         if(firstline && line.startsWith("---")) {
             readingHeader = true
+            firstline = false
         } else if(readingHeader) {
             if(line.startsWith("---")) {
                 readingHeader = false
