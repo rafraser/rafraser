@@ -1,10 +1,8 @@
 import { promises as fs } from "fs"
-import path from "path"
 import { loadPage } from "./page"
-
-const CONTENT_DIR = "static-content"
-const OUTPUT_DIR = "static-build"
-const pages = []
+import { CONTENT_DIR, DEFAULT_TEMPLATE } from "./util"
+import { applyTemplate } from "./templates"
+import path from "path"
 
 async function getFiles(directory: string): Promise<string[]> {
   const dirents = await fs.readdir(directory, { withFileTypes: true})
@@ -22,8 +20,11 @@ async function getFiles(directory: string): Promise<string[]> {
 async function loadPagesInDirectory(path: string) {
   const files = await getFiles(path)
   const pages = await Promise.all(files.map(file => loadPage(file)))
-  console.log(pages)
+
+  await Promise.all(pages.map(page => {
+    applyTemplate(page.options.get("template") || DEFAULT_TEMPLATE, page)
+  }))
 }
 
 // Apply pages to templates and save
-loadPagesInDirectory("static-content/pages").then(_ => {})
+loadPagesInDirectory(`${CONTENT_DIR}/pages`).then(_ => {})

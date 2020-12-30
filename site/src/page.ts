@@ -7,6 +7,7 @@ import readline from "readline"
 
 export class Page {
     options: Map<string, string>
+    path: string
     content: string
 }
 
@@ -41,8 +42,8 @@ async function parseFile(filepath: string, contentParser: (raw: string) => strin
         } else if(readingHeader) {
             if(line.startsWith("---")) {
                 readingHeader = false
-            } else if(line.includes(":")) {
-                let [key, value] = line.split(":").slice(0, 2)
+            } else if(line.includes(": ")) {
+                let [key, value] = line.split(": ").slice(0, 2)
                 options.set(key, value)
             }
         } else {
@@ -51,5 +52,16 @@ async function parseFile(filepath: string, contentParser: (raw: string) => strin
     })
 
     await once(rl, "close")
-    return {options: options, content: contentParser(content)}
+    return {
+        path: filepath.substring(0, filepath.lastIndexOf('.')) || filepath,
+        options: options,
+        content: contentParser(content)
+    }
 }
+
+export function pageToSettingsObject(page: Page): object {
+    const obj : Record<string, any> = {}
+    page.options.forEach((value, key) => obj[key] = value)
+    obj["content"] = page.content
+    return obj
+  }
