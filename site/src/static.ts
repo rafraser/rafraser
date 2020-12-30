@@ -1,7 +1,8 @@
 import { promises as fs } from "fs"
 import { loadPage } from "./page"
-import { CONTENT_DIR, DEFAULT_TEMPLATE } from "./util"
+import { CONTENT_DIR, OUTPUT_DIR, DEFAULT_TEMPLATE } from "./util"
 import { applyTemplate } from "./templates"
+import { spawn } from "child_process"
 import path from "path"
 
 async function getFiles(directory: string): Promise<string[]> {
@@ -16,15 +17,28 @@ async function getFiles(directory: string): Promise<string[]> {
   return Array.prototype.concat(...files)
 }
 
-// Load all into memory
-async function loadPagesInDirectory(path: string) {
+async function buildPagesInDirectory(path: string) {
   const files = await getFiles(path)
-  const pages = await Promise.all(files.map(file => loadPage(file)))
+  const pages = await Promise.all(files.map(file => {
+    let name = file.substr(path.length)
+    name = name.substring(0, name.lastIndexOf('.')) || name
+    return loadPage(file, name)
+  }))
 
   await Promise.all(pages.map(page => {
     applyTemplate(page.options.get("template") || DEFAULT_TEMPLATE, page)
   }))
 }
 
+async function copyAssets() {
+  const cp = spawn("cp", ["-a", `${CONTENT_DIR}/assets/.`, `${OUTPUT_DIR}/assets/`])
+  cp.on("error", err => console.error(err))
+}
+
+async function buildStaticSite() {
+  await copyAssets()
+  await buildPagesInDirectory(`${CONTENT_DIR}/pages`)
+}
+
 // Apply pages to templates and save
-loadPagesInDirectory(`${CONTENT_DIR}/pages`).then(_ => {})
+buildStaticSite().then(_ => {})

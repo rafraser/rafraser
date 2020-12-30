@@ -6,8 +6,9 @@
   "scripts": {
     "build": "tsc && npm run lint",
     "lint": "tsc --noEmit",
-    "static-build": "node dist/static.js",
+    "static-build": "npm run static-sass & node dist/static.js",
     "static-clean": "rm -rf static-build",
+    "static-sass": "sass static-content/sass:static-build/assets/style",
     "static-all": "npm run static-clean && npm run static-build"
   },
   "keywords": [],

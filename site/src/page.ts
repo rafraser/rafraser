@@ -15,16 +15,16 @@ const EXTENSION_PARSERS = {
     "md": markdownParser
 }
 
-export async function loadPage(filepath: string): Promise<Page> {
+export async function loadPage(filepath: string, name: string): Promise<Page> {
     // Determine the body parser from extension
     const extension = path.extname(filepath)
     const contentParser = EXTENSION_PARSERS["md"] || markdownParser
 
     // Load & parse the page data
-    return parseFile(filepath, contentParser)
+    return parseFile(filepath, name, contentParser)
 }
 
-async function parseFile(filepath: string, contentParser: (raw: string) => string): Promise<Page> {
+async function parseFile(filepath: string, name: string, contentParser: (raw: string) => string): Promise<Page> {
     const rl = readline.createInterface({
         input: fs.createReadStream(filepath),
         crlfDelay: Infinity
@@ -53,7 +53,7 @@ async function parseFile(filepath: string, contentParser: (raw: string) => strin
 
     await once(rl, "close")
     return {
-        path: filepath.substring(0, filepath.lastIndexOf('.')) || filepath,
+        path: name,
         options: options,
         content: contentParser(content)
     }
