@@ -1,0 +1,23 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name=viewport content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="{{ content_dir }}\style\{{ page.style | default: "post" }}.css">
+
+        <meta property="og:title" content="{{ page.title }}"/>
+        <meta property="og:type" content="article"/>
+        {%- if page.subtext %}
+        <meta property="og:description" content="{{ page.subtext }}"/>
+        {%- endif %}
+    </head>
+    <body>
+        <h1>{{ page.title }}</h1>
+        {%- if page.subtext %}
+        <h2>{{ page.subtext }}</h2>
+        {%- endif %}
+
+        <div>
+            {{ page.content }}
+        </div>
+    </body>
+</html>
