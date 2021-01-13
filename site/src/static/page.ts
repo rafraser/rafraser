@@ -1,5 +1,6 @@
 import { markdownParser } from "./parser/markdown"
 import { once } from "events"
+import YAML from "yaml"
 
 import fs from "fs"
 import path from "path"
@@ -30,7 +31,8 @@ async function parseFile(filepath: string, name: string, contentParser: (raw: st
         crlfDelay: Infinity
     })
 
-    let options : Map<string, string> = new Map()
+    let rawOptions = ""
+    let options : Map<string, any> = new Map()
     let content = ""
     let firstline = true
     let readingHeader = false
@@ -42,9 +44,8 @@ async function parseFile(filepath: string, name: string, contentParser: (raw: st
         } else if(readingHeader) {
             if(line.startsWith("---")) {
                 readingHeader = false
-            } else if(line.includes(": ")) {
-                let [key, value] = line.split(": ").slice(0, 2)
-                options.set(key, value)
+            } else {
+                rawOptions += line + "\n"
             }
         } else {
             content += line + "\n"
@@ -52,6 +53,8 @@ async function parseFile(filepath: string, name: string, contentParser: (raw: st
     })
 
     await once(rl, "close")
+    options = YAML.parse(rawOptions, {mapAsMap: true})
+
     return {
         path: name,
         options: options,
