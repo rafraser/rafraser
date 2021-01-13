@@ -1,0 +1,26 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name=viewport content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="{{ content_dir }}\style\{{ page.style | default: "page_list" }}.css">
+
+        <meta property="og:title" content="{{ page.title }}"/>
+        <meta property="og:type" content="article"/>
+        {%- if page.subtext %}
+        <meta property="og:description" content="{{ page.subtext }}"/>
+        {%- endif %}
+    </head>
+    <body>
+        <div>
+            {{ page.content }}
+        </div>
+        <div>
+            {%- for post in paginate.pages %}
+            <section>
+                <h2>{{ post.title }} </h2>
+                <p>{{ post.subtext | default: "" }}</p>
+            </section>
+            {% endfor %}
+        </div>
+    </body>
+</html>

@@ -66,5 +66,6 @@ export function pageToSettingsObject(page: Page): object {
     const obj : Record<string, any> = {}
     page.options.forEach((value, key) => obj[key] = value)
     obj["content"] = page.content
+    obj["path"] = page.path
     return obj
 }

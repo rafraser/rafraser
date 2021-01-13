@@ -37,7 +37,7 @@ async function paginate(page: Page, pages: Page[]) {
   for(let page_number=1; page_number <= maxPage; page_number++) {
     const pageFiles = pages.slice((page_number - 1) * PAGE_SIZE, page_number * PAGE_SIZE)
     const paginator_data = {
-      pages: pageFiles,
+      pages: pageFiles.map(pageToSettingsObject),
       currentPage: page_number,
       maxPage: maxPage
     } as any

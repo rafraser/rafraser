@@ -32,6 +32,5 @@ export async function applyTemplate(template: string, outpath: string, parameter
     const renderedTemplate = await engine.parseAndRender(templateBody, parameters)
     await fs.mkdir(path.dirname(outputPath), { recursive: true })
     await fs.writeFile(outputPath, renderedTemplate)
-
     console.log("Built: ", outputPath)
 }
