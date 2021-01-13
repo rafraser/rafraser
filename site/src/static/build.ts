@@ -1,19 +1,18 @@
 import { promises as fs } from "fs"
-import { loadPage } from "./page"
+import { Page, loadPage } from "./page"
 import { CONTENT_DIR, OUTPUT_DIR, DEFAULT_TEMPLATE } from "./util"
-import { applyTemplate } from "./templates"
+import { applyPageTemplate } from "./templates"
+import { applyPaginator } from "./paginator"
 import { spawn } from "child_process"
 import path from "path"
 
 async function getFiles(directory: string): Promise<string[]> {
   const dirents = await fs.readdir(directory, { withFileTypes: true})
 
-  const test = dirents.map(dirent => {
-      const res = path.join(directory, dirent.name)
-      return dirent.isDirectory() ? getFiles(res) : Promise.resolve([res])
-  })
-  const files = await Promise.all(test)
-
+  const files = await Promise.all(dirents.map(dirent => {
+    const res = path.join(directory, dirent.name)
+    return dirent.isDirectory() ? getFiles(res) : Promise.resolve([res])
+  }))
   return Array.prototype.concat(...files)
 }
 
@@ -25,9 +24,15 @@ async function buildPagesInDirectory(path: string) {
     return loadPage(file, name)
   }))
 
-  await Promise.all(pages.map(page => {
-    applyTemplate(page.options.get("template") || DEFAULT_TEMPLATE, page)
-  }))
+  await Promise.all(pages.map(page => buildPage(page, pages)))
+}
+
+async function buildPage(page: Page, pages: Page[]) {
+  if(page.options.get("paginator")) {
+    await applyPaginator(page, pages)
+  } else {
+    await applyPageTemplate(page.options.get("template") || DEFAULT_TEMPLATE, page)
+  }
 }
 
 async function copyAssets() {

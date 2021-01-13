@@ -17,15 +17,21 @@ async function fetchTemplate(template: string): Promise<string> {
     return templates.get(template)
 }
 
-export async function applyTemplate(template: string, page: Page) {
-    const templateBody = await fetchTemplate(template)
-    const outputPath = path.join(OUTPUT_DIR, `${page.path}.html`)
+export async function applyPageTemplate(template: string, page: Page) {
     const parameters = {
         page: pageToSettingsObject(page),
-        content_dir: path.relative(path.dirname(outputPath), path.join(OUTPUT_DIR, "/assets"))
     }
-    const renderedTemplate = await engine.parseAndRender(templateBody, parameters)
+    await applyTemplate(template, page.path, parameters)
+}
 
+export async function applyTemplate(template: string, outpath: string, parameters: any) {
+    const templateBody = await fetchTemplate(template)
+    const outputPath = path.join(OUTPUT_DIR, `${outpath}.html`)
+    parameters.content_dir = path.relative(path.dirname(outputPath), path.join(OUTPUT_DIR, "/assets"))
+
+    const renderedTemplate = await engine.parseAndRender(templateBody, parameters)
     await fs.mkdir(path.dirname(outputPath), { recursive: true })
     await fs.writeFile(outputPath, renderedTemplate)
+
+    console.log("Built: ", outputPath)
 }

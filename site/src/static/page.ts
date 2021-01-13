@@ -7,7 +7,7 @@ import path from "path"
 import readline from "readline"
 
 export class Page {
-    options: Map<string, string>
+    options: Map<string, any>
     path: string
     content: string
 }
@@ -67,4 +67,4 @@ export function pageToSettingsObject(page: Page): object {
     page.options.forEach((value, key) => obj[key] = value)
     obj["content"] = page.content
     return obj
-  }
+}
