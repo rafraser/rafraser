@@ -12,20 +12,22 @@ export class Page {
     content: string
 }
 
-const EXTENSION_PARSERS = {
+export type ParserFunction = (raw: string) => string
+
+const EXTENSION_PARSERS : { [key: string]: ParserFunction } = {
     "md": markdownParser
 }
 
 export async function loadPage(filepath: string, name: string): Promise<Page> {
     // Determine the body parser from extension
     const extension = path.extname(filepath)
-    const contentParser = EXTENSION_PARSERS["md"] || markdownParser
+    const contentParser = EXTENSION_PARSERS[extension] || markdownParser
 
     // Load & parse the page data
     return parseFile(filepath, name, contentParser)
 }
 
-async function parseFile(filepath: string, name: string, contentParser: (raw: string) => string): Promise<Page> {
+async function parseFile(filepath: string, name: string, contentParser: ParserFunction): Promise<Page> {
     const rl = readline.createInterface({
         input: fs.createReadStream(filepath),
         crlfDelay: Infinity
