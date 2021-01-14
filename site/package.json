@@ -11,7 +11,8 @@
     "static-sass": "sass static-content/sass:static-build/assets/style",
     "static-all": "npm run static-clean && npm run static-build",
     "all": "tsc && npm run static-all",
-    "serve": "node dist/server.js"
+    "serve": "node dist/server.js",
+    "build-tag-templates": "node dist/static/build_tags"
   },
   "keywords": [],
   "author": "Robert A Fraser",
