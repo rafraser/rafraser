@@ -27,7 +27,7 @@ export async function applyPageTemplate(template: string, page: Page) {
 export async function applyTemplate(template: string, outpath: string, parameters: any) {
     const templateBody = await fetchTemplate(template)
     const outputPath = path.join(OUTPUT_DIR, `${outpath}.html`)
-    parameters.content_dir = path.relative(path.dirname(outputPath), path.join(OUTPUT_DIR, "/assets"))
+    parameters.content_dir = path.relative(path.dirname(outputPath), OUTPUT_DIR)
 
     const renderedTemplate = await engine.parseAndRender(templateBody, parameters)
     await fs.mkdir(path.dirname(outputPath), { recursive: true })
