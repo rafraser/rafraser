@@ -55,7 +55,13 @@ async function parseFile(filepath: string, name: string, contentParser: ParserFu
     })
 
     await once(rl, "close")
-    options = YAML.parse(rawOptions, {mapAsMap: true})
+    try {
+        options = YAML.parse(rawOptions, {mapAsMap: true})
+    } catch (err) {
+        console.log(err)
+        console.log(rawOptions)
+    }
+    if(!options) options = new Map()
 
     return {
         path: name,
