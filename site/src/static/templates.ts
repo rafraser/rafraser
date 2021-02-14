@@ -41,7 +41,12 @@ async function replaceAsync(str: string, regex: RegExp, func: (match: string, ..
 async function fetchComponent(component: string): Promise<string> {
     if(!components.get(component)) {
         const componentFile = path.join(`${CONTENT_DIR}/components`, `${component}.html`)
-        components.set(component, await fs.readFile(componentFile, "utf8"))
+
+        try {
+            components.set(component, await fs.readFile(componentFile, "utf8"))
+        } catch(e) {
+            components.set(component, "")
+        }
     }
 
     return components.get(component)
