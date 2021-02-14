@@ -5,16 +5,46 @@ import { CONTENT_DIR, OUTPUT_DIR } from "./util"
 import path from "path"
 
 const engine = new Liquid()
-
 const templates = new Map() as Map<string, string>
+const components = new Map() as Map<string, string>
 
 async function fetchTemplate(template: string): Promise<string> {
     if (!templates.get(template)) {
         const templateFile = path.join(`${CONTENT_DIR}/templates`, `${template}.html`)
-        templates.set(template, await fs.readFile(templateFile, "utf8"))
+        let templateContent = await fs.readFile(templateFile, "utf8")
+
+        // Fill in include tags
+        // We could just let LiquidJS do this for us - but there's a couple of benefits here
+        //  - we only really need the contents, nothing else fancy going on
+        //  - this way we can memoize the component loads for zoom zoom
+        templateContent = await replaceAsync(templateContent, /{% include2 [\"\'](.*)[\"\'] %}/gm, async (_, group) => {
+            console.log(group)
+            return await fetchComponent(group)
+        })
+        templates.set(template, templateContent)
     }
 
     return templates.get(template)
+}
+
+async function replaceAsync(str: string, regex: RegExp, func: (match: string, ...args: string[]) => Promise<string>): Promise<string> {
+    const promises : Promise<string>[] = []
+    str.replace(regex, (match: string, ...args: string[]) => {
+        promises.push(func(match, ...args))
+        return ""
+    })
+
+    const data = await Promise.all(promises)
+    return str.replace(regex, () => data.shift());
+}
+
+async function fetchComponent(component: string): Promise<string> {
+    if(!components.get(component)) {
+        const componentFile = path.join(`${CONTENT_DIR}/components`, `${component}.html`)
+        components.set(component, await fs.readFile(componentFile, "utf8"))
+    }
+
+    return components.get(component)
 }
 
 export async function applyPageTemplate(template: string, page: Page) {
