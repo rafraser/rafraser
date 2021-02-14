@@ -1,23 +1,28 @@
+<!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8"/>
-        <meta name=viewport content="width=device-width, initial-scale=1"/>
-        <link rel="stylesheet" href="{{ content_dir }}\assets\style\{{ page.style | default: "post" }}.css">
+        {% include "meta" %}
 
-        <meta property="og:title" content="{{ page.title }}"/>
-        <meta property="og:type" content="article"/>
-        {%- if page.subtext %}
-        <meta property="og:description" content="{{ page.subtext }}"/>
-        {%- endif %}
+        <link rel="preload" href="{{ content_dir }}\assets\font\LEMONMILK.otf" as="font" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ content_dir }}\assets\style\{{ page.style | default: "post" }}.css">
     </head>
     <body>
-        <h1>{{ page.title }}</h1>
-        {%- if page.subtext %}
-        <h2>{{ page.subtext }}</h2>
-        {%- endif %}
+        {% include "header" %}
+        <div class="container">
+            <div class="container-head">
+                <h1>{{ page.title }}</h1>
+                {%- if page.subtext %}
+                <p>{{ page.subtext }}</p>
+                {%- endif %}
 
-        <div>
-            {{ page.content }}
+                {%- for tag in page.tags %}
+                <div class="tag-chip"> {{ tag }} </div>
+                {%- endfor %}
+            </div>
+            <div class="container-content">
+                {{ page.content }}
+            </div>
         </div>
+        {% include "footer" %}
     </body>
 </html>

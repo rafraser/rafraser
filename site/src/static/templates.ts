@@ -16,8 +16,8 @@ async function fetchTemplate(template: string): Promise<string> {
         // Fill in include tags
         // We could just let LiquidJS do this for us - but there's a couple of benefits here
         //  - we only really need the contents, nothing else fancy going on
-        //  - this way we can memoize the component loads for zoom zoom
-        templateContent = await replaceAsync(templateContent, /{% include2 [\"\'](.*)[\"\'] %}/gm, async (_, group) => {
+        //  - this way we can memoize the component loads for zoom zoom speeds
+        templateContent = await replaceAsync(templateContent, /{% include [\"\'](.*)[\"\'] %}/gm, async (_, group) => {
             console.log(group)
             return await fetchComponent(group)
         })
