@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+<meta name=viewport content="width=device-width, initial-scale=1"/>
+
+<title>Hello World: The Front</title>
+<meta name="description" content="Turns out that design is pretty hard - who knew?">
+<meta name="theme-color" content="#4834d4">
+
+<meta property="og:title" content="Hello World: The Front"/>
+<meta property="og:type" content="article"/>
+<meta property="og:description" content="Turns out that design is pretty hard - who knew?"/>
+<meta property="og:image" content="https://robertafraser.com/assets/img/thumbnails/default.png"/>
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="450">
+
+<script src="https://kit.fontawesome.com/df04d766c5.js" crossorigin="anonymous" defer></script>
+
+        <link rel="preload" href="..\assets\font\LEMONMILK.otf" as="font" crossorigin="anonymous">
+        <link rel="stylesheet" href="..\assets\style\post.css">
+    </head>
+    <body>
+        <header>
+    <a class="header-title" href="./">
+        <span>Robert</span>
+        <span class="title-initial">A</span>
+        <span>Fraser</span>
+    </a>
+</header>
+        <div class="container">
+            
+            <div class="post-head">
+    <div class="post-head-left">
+        <h1>Hello World: The Front</h1>
+            <p>Turns out that design is pretty hard - who knew?</p>
+        <i class="fas fa-tag"></i>
+        <a href="../tag/Web Development">Web Development</a>
+        <a href="../tag/Sass">Sass</a>
+        <br>
+    </div>
+    <div class="post-head-right">
+        <img width="800" height="450" alt="Thumbnail" src="..\assets\img\thumbnails\default.png"></img>
+    </div>
+</div>
+
+            <div class="container-content">
+                <p>After <a href="./20210201-helloworld-back.html">building a static site generator</a> and writing some content, all I had left to do was make it look pretty. How hard could that possibly be?</p>
+<p>Turns out it was a lot harder than I expected.</p>
+<h2 id="sass">Sass</h2>
+<p>CSS has a reputation for being pretty painful. In recent times, it&#39;s gotten slightly better with things like flexbox. One of these days I&#39;ll take some time and learn it properly.</p>
+<p>For the styling of this website, I&#39;m using Sass. Sass doesn&#39;t magically help me master flexbox, but it definitely makes life easier. Being able to nest selectors logically helps keep everything a lot more readable. I can declare all my colours in a shared file, and try out different accent colours with just one line changed.</p>
+<p>I&#39;m not doing anything too fancy style wise, so this part went relatively smoothly. It&#39;s hard to go wrong with a single column blog layout.</p>
+<h2 id="colours">Colo(u)rs</h2>
+<p>Surprisingly, my favourite colour is orange - but orange is a controversial colour, so I decided it&#39;s probably for the best not to use that on my personal website. Usually, I&#39;m a sucker for a light blue and white colour scheme.</p>
+<p>I wanted to colour the links in the text to add a splash of colour to otherwise drab articles, but unfortunately the contrast between light blue and white doesn&#39;t work all that well. I&#39;m not sure how important or accurate this contrast rating really is; but I&#39;d rather not get into a fight over that so I looked for alternative options instead. I ended up settling on a nice shade of purple - it&#39;ll never replace light blue in my heart, but at least the contrast score is good.</p>
+<p>If you&#39;re reading this in the future, there&#39;s a good chance I&#39;ve changed up the links or adjusted the accent colour already. Sorry.</p>
+<h2 id="lighthouse">Lighthouse</h2>
+<p><a href="https://developers.google.com/web/tools/lighthouse">Lighthouse</a> is an automated tool for auditing webpages. It&#39;s great for catching pesky performance problems, or picking up on accessibility issues. Since this is a pretty lightweight blogging site, I want my performance to be as good as possible.</p>
+<p>Overall, nothing was too badly wrong but there were a couple of things I had to do:</p>
+<ul>
+<li>Make sure I had alt text and aria-labels on everything that needed it</li>
+<li>Defer some scripts (such as Font Awesome) and preload some resources (such as fonts)</li>
+<li>Add some more boring meta tags</li>
+</ul>
+<p>Once that was all tweaked, I ended up with a perfect score!</p>
+<p>I&#39;m sure this won&#39;t last all that long, but it&#39;s great to start off on the right foot. Lighthouse also provides some Continuous Integration tools - in future, I&#39;d like to set these up to automatically run on the site using Github Actions.</p>
+<h2 id="open-graph-tags">Open Graph Tags</h2>
+<p>Open Graph Tags are often overlooked, but they&#39;re surprisingly useful to have. These tags are used by most social media services to generate the fancy embed snippets that appear when links are shared.</p>
+<h2 id="the-a">The A</h2>
+<p>The final step was to add a bit of shine to my name sitting in the header. I wanted my middle initial to stand out, to compensate for my parents giving me an extremely boring first and last name.</p>
+<p>I had a couple of design ideas that I played around with:</p>
+<p>I wasn&#39;t quite sure on which I preferred, or if there were any better options out there, so I asked some good friends for their ideas:</p>
+<blockquote>
+<p>oooh sideways A? so it looks like a funky arrow?</p>
+</blockquote>
+<!-- -->
+
+<blockquote>
+<p>Have it rotate constantly</p>
+</blockquote>
+<!-- -->
+
+<blockquote>
+<p>So far all of your options suck</p>
+</blockquote>
+<p>Not all advice is useful.</p>
+
+            </div>
+        </div>
+        <footer>
+    <div class="social-icons">
+        <a href="https://github.com/rafraser" aria-label="Github"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/robert-a-fraser/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p>Built with &hearts; by Robert A Fraser</p>
+</footer>
+    </body>
+</html>

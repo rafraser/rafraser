@@ -25,7 +25,7 @@ async function getFiles(directory: string): Promise<string[]> {
 }
 
 async function buildPagesInDirectory(directory: string) {
-  const pages = await loadPages(directory)
+  const pages = (await loadPages(directory)).reverse()
   await Promise.all(pages.map(page => buildPage(page, pages)))
 }
 

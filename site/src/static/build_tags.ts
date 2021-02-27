@@ -20,7 +20,7 @@ async function buildTagTemplates() {
 }
 
 async function buildTagTemplate(tag: string) {
-  const outputPath = `${CONTENT_DIR}/pages/tag/${tag}.md`
+  const outputPath = `${CONTENT_DIR}/pages/tag/${tag.toLowerCase()}.md`
   try {
     await fs.promises.access(outputPath, fs.constants.F_OK)
     return
@@ -35,7 +35,7 @@ title: "Tag: ${tag}"
 subtext: All articles tagged with ${tag}
 template: page_list
 paginator:
-  directory: posts
+  directory: post
   tag: ${tag}
 ---
 

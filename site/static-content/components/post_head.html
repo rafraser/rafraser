@@ -18,7 +18,7 @@
         {%- if view.tags %}
         <i class="fas fa-tag"></i>
         {%- for tag in view.tags %}
-        <a href="../tag/{{ tag }}">{{ tag }}</a>
+        <a href="../tag/{{ tag | downcase }}">{{ tag }}</a>
         {%- endfor %}
         <br>
         {%- endif %}

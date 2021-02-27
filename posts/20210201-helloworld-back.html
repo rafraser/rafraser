@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+<meta name=viewport content="width=device-width, initial-scale=1"/>
+
+<title>Hello World: The Back</title>
+<meta name="description" content="How I built a basic static site generator, and why you should never follow in my footsteps">
+<meta name="theme-color" content="#4834d4">
+
+<meta property="og:title" content="Hello World: The Back"/>
+<meta property="og:type" content="article"/>
+<meta property="og:description" content="How I built a basic static site generator, and why you should never follow in my footsteps"/>
+<meta property="og:image" content="https://robertafraser.com/assets/img/thumbnails/default.png"/>
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="450">
+
+<script src="https://kit.fontawesome.com/df04d766c5.js" crossorigin="anonymous" defer></script>
+
+        <link rel="preload" href="..\assets\font\LEMONMILK.otf" as="font" crossorigin="anonymous">
+        <link rel="stylesheet" href="..\assets\style\post.css">
+    </head>
+    <body>
+        <header>
+    <a class="header-title" href="./">
+        <span>Robert</span>
+        <span class="title-initial">A</span>
+        <span>Fraser</span>
+    </a>
+</header>
+        <div class="container">
+            
+            <div class="post-head">
+    <div class="post-head-left">
+        <h1>Hello World: The Back</h1>
+            <p>How I built a basic static site generator, and why you should never follow in my footsteps</p>
+        <i class="fas fa-tag"></i>
+        <a href="../tag/Web Development">Web Development</a>
+        <a href="../tag/Typescript">Typescript</a>
+        <br>
+    </div>
+    <div class="post-head-right">
+        <img width="800" height="450" alt="Thumbnail" src="..\assets\img\thumbnails\default.png"></img>
+    </div>
+</div>
+
+            <div class="container-content">
+                <p>I&#39;ve finally decided to organise my life a little more and start writing some posts for the cool programming stuff I do in my (limited) spare time. Part of this involves updating my website to be a bit less... atrocious to manage.</p>
+<p>Since I&#39;m just writing some simple blog posts, a static site generator is the way to go. There&#39;s a ton of options out there: <a href="https://jekyllrb.com/">Jekyll</a>, <a href="https://gohugo.io/">Hugo</a>, and <a href="https://hexo.io/">Hexo</a> just to name a few. Of these, <em>Jekyll</em> is my personal favourite, but I decided to torture myself and make my own.</p>
+<p>This post is mostly going to be boring talk about design decisions - I promise that future articles will have cool code and more interesting content!</p>
+<h2 id="the-basics">The Basics</h2>
+<p>Static site generators are (relatively) simple to build. There are two main steps to worry about:</p>
+<ul>
+<li>Take written posts and convert them into some HTML content</li>
+<li>Take HTML content (and metadata) and stick it in a template</li>
+</ul>
+<p>As with all software projects, there&#39;s a bit more complexity once you get into it, but the general process isn&#39;t too complicated. In this case, most of the code I&#39;ve written is just about finding files in folders - the bulk of the work is sticking other packages together.</p>
+<h2 id="infrastructure">Infrastructure</h2>
+<p>I&#39;m in love with <a href="https://www.typescriptlang.org/">Typescript</a> lately, so that&#39;s what I&#39;m using to build the static site generator.</p>
+<p>There are many easy ways to host a static site - it&#39;s a lot easier to serve a folder of files than run a full backend. Github Pages or Amazon&#39;s S3 + Cloudfront would be great ways to get this working on a very tight budget.</p>
+<p>Since I already have a VPS setup for other projects, I&#39;ve just got a basic <a href="https://expressjs.com/">Express</a> server hosting the generated static files. This is overkill - but it gives me a bit more room to build an actual backend if I ever need one.</p>
+<h2 id="markdown">Markdown</h2>
+<p>Markdown is pretty much the standard for static site generators, and rightfully so. It&#39;s easy to read, easy to write, and there are tons of tools out there for it already.</p>
+<p>I&#39;m writing my posts in Markdown and using <a href="https://github.com/markedjs/marked">Marked</a> to convert them into HTML content, which can then be added into templates as needed. Marked works well enough, and it&#39;s easy to extend if I ever want to get a bit fancier with my layouts.</p>
+<h2 id="liquid">Liquid</h2>
+<p>I&#39;m a big fan of Shopify&#39;s <a href="https://shopify.dev/docs/themes/liquid/reference">Liquid</a> templating language. It lets me write templates that make sense to me as a programmer, and focus more on what I&#39;m writing than fiddling with template files.</p>
+<p><a href="https://liquidjs.com/">LiquidJS</a> is a great Typescript implementation of Liquid, so it slots in easily with everything else so far.</p>
+<p>Specifying default values for parameters is easy:</p>
+<pre><code class="language-html">&lt;h1&gt;{{ title | default: &quot;Cool Title&quot; }}&lt;/h1&gt;</code></pre>
+<p>Even making a for loop is simple:</p>
+<pre><code class="language-html">{%- for post in posts %}
+&lt;section&gt;
+  &lt;h2&gt;{{ post.title }}&lt;/h2&gt;
+  &lt;p&gt;{{ post.subtext | default: &quot;&quot; }}&lt;/p&gt;
+&lt;/section&gt;
+{% endfor %}</code></pre>
+<p>These features aren&#39;t all that useful for basic article pages, but they come in very handy when doing something more complicated such as a paginated article listing.</p>
+<h2 id="putting-it-all-together">Putting it all together</h2>
+<p>Quick recap:</p>
+<ul>
+<li><a href="https://github.com/markedjs/marked">Marked</a> to process raw post Markdown</li>
+<li><a href="https://liquidjs.com/">LiquidJS</a> to put things into templates</li>
+<li><a href="https://www.typescriptlang.org/">Typescript</a> to handle putting everything together</li>
+<li><a href="https://prismjs.com/">Prism</a> and <a href="https://sass-lang.com/">Sass</a> to make the end result look nice</li>
+</ul>
+<p>Overall, the result is functional and flexible. There&#39;s definitely a lot more tinkering about that I need to do, but that&#39;s mostly on the styling side of things, and I&#39;m pretty happy with how everything has turned out so far.</p>
+<p>The code for this static site builder is in my <a href="https://github.com/rafraser/rafraser/tree/master/site">main Github repository</a>. There&#39;s not too much to it, as it&#39;s mostly just combining other libraries together, but hopefully it&#39;s interesting enough.</p>
+<h2 id="future-plans">Future Plans</h2>
+<p>I still need to do a nicer command-line interface for everything - it&#39;d be great to link it into VSCode so that I can automatically build a page when I edit it.</p>
+<p>A pretty common feature of other static site generators is the ability to &#39;include&#39; snippets into multiple templates. This wouldn&#39;t be too difficult to add, but since I only have a handful of templates so far, this isn&#39;t all that useful.</p>
+<p>I&#39;d love to experiment with <a href="https://pandoc.org/">Pandoc</a> to convert other formats into Markdown. If I&#39;m writing about Python, it&#39;d be great to take a Jupyter notebook and turn that into a post.</p>
+
+            </div>
+        </div>
+        <footer>
+    <div class="social-icons">
+        <a href="https://github.com/rafraser" aria-label="Github"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/robert-a-fraser/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p>Built with &hearts; by Robert A Fraser</p>
+</footer>
+    </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include "meta" %}
+
+        <link rel="preload" href="{{ content_dir }}\assets\font\LEMONMILK.otf" as="font" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ content_dir }}\assets\style\{{ page.style | default: "home" }}.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="home-title">
+                <span>Robert</span>
+                <span class="title-initial">A</span>
+                <span>Fraser</span>
+            </div>
+            <div class="social-icons">
+                <a href="https://github.com/rafraser" aria-label="Github"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/robert-a-fraser/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+
+            {{ page.content }}
+
+            <div class="post-head">
+                <div class="post-head-left">
+                    <a class="post-title-link" href="/posts">Blog</a>
+                    <p>I'm starting to write about all the exciting stuff I do. Hopefully you'll find something interesting!</p>
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>2021 - Current</span><br>
+                </div>
+                <div class="post-head-right">
+                    <a class="post-title-link" href="/posts" aria-label="Blog">
+                    <img width="800" height="450" alt="Thumbnail" src="..\assets\img\thumbnails\elm225.png"></img>
+                    </a>
+                </div>
+            </div>
+
+            <div class="post-head">
+                <div class="post-head-left">
+                    <a class="post-title-link" href="https://www.fluffyservers.com" rel="noreferrer noopener">Fluffy Servers</a>
+                    <p>I ran Fluffy Servers, a gaming community which attracted over 50,000 players during it's lifetime.</p>
+                    <p>One key part was our Minigames server - over the years, we created 20+ gamemodes and 50+ maps!</p>
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>2017 - 2021</span><br>
+                </div>
+                <div class="post-head-right">
+                    <a class="post-title-link" href="https://www.fluffyservers.com" rel="noreferrer noopener" aria-label="Fluffy Servers">
+                    <img width="800" height="450" alt="Thumbnail" src="..\assets\img\thumbnails\elm225.png"></img>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

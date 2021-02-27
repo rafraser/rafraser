@@ -7,7 +7,7 @@
 
         {%- if view.date %}
         <i class="fas fa-calendar-alt"></i>
-        <span>February 27th, 2021</span><br>
+        <span>{{ view.date }}</span><br>
         {%- endif %}
 
         {%- if view.repository %}
@@ -18,7 +18,7 @@
         {%- if view.tags %}
         <i class="fas fa-tag"></i>
         {%- for tag in view.tags %}
-        <a href="../../tag/{{ tag }}">{{ tag }}</a>
+        <a href="../../tag/{{ tag | downcase }}">{{ tag }}</a>
         {%- endfor %}
         <br>
         {%- endif %}

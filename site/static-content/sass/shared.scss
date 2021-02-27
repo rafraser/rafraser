@@ -75,14 +75,15 @@ header {
   background-color: $color-foreground;
 
   .header-title {
-    display: flex;
+    display: inline-flex;
     height: 100%;
     align-items: center;
+
     vertical-align: middle;
     margin-left: 12px;
 
     text-decoration: none;
-    color: #3a3a3a;
+    color: $color-text;
     font-family: "LemonMilk", sans-serif;
     font-size: 32px;
 
@@ -90,6 +91,30 @@ header {
       font-size: 48px;
       color: $color-accent;
       margin: 0 8px;
+    }
+  }
+
+  .header-links {
+    float: right;
+    display: inline-flex;
+    height: 100%;
+    align-items: center;
+
+    vertical-align: middle;
+    margin-right: 12px;
+
+    color: $color-text;
+    font-family: "LemonMilk", sans-serif;
+    font-size: 24px;
+
+    a {
+      color: #4834d4;
+      text-decoration: none;
+      padding: 0 8px;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

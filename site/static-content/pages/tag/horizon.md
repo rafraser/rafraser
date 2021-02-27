@@ -1,0 +1,10 @@
+---
+title: "Tag: Horizon"
+subtext: All articles tagged with Horizon
+template: page_list
+paginator:
+  directory: post
+  tag: Horizon
+---
+
+Insert tag description here

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+<meta name=viewport content="width=device-width, initial-scale=1"/>
+
+<title>Test Page</title>
+<meta name="description" content="A super cool testing page, for secretive testing purposes.">
+<meta name="theme-color" content="#4834d4">
+
+<meta property="og:title" content="Test Page"/>
+<meta property="og:type" content="article"/>
+<meta property="og:description" content="A super cool testing page, for secretive testing purposes."/>
+<meta property="og:image" content="https://robertafraser.com/assets/img/thumbnails/elm225.png"/>
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="450">
+
+<script src="https://kit.fontawesome.com/df04d766c5.js" crossorigin="anonymous" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js" crossorigin="anonymous" defer></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-tomorrow.min.css" crossorigin="anonymous"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-typescript.min.js" crossorigin="anonymous" defer></script>
+
+        <link rel="preload" href="..\assets\font\LEMONMILK.otf" as="font" crossorigin="anonymous">
+        <link rel="stylesheet" href="..\assets\style\post.css">
+    </head>
+    <body>
+        <header>
+    <a class="header-title" href="./">
+        <span>Robert</span>
+        <span class="title-initial">A</span>
+        <span>Fraser</span>
+    </a>
+</header>
+        <div class="container">
+            
+            <div class="post-head">
+    <div class="post-head-left">
+        <h1>Test Page</h1>
+            <p>A super cool testing page, for secretive testing purposes.</p>
+        <i class="fas fa-calendar-alt"></i>
+        <span>February 27th, 2021</span><br>
+        <i class="fas fa-tag"></i>
+        <a href="../tag/Elm">Elm</a>
+        <a href="../tag/Typescript">Typescript</a>
+        <br>
+    </div>
+    <div class="post-head-right">
+        <img width="800" height="450" alt="Thumbnail" src="..\assets\img\thumbnails\elm225.png"></img>
+    </div>
+</div>
+
+            <div class="container-content">
+                <h2 id="blah-blah">Blah blah</h2>
+<h3 id="blah-blah-blah-blah">Blah blah blah blah</h3>
+<p>there&#39;s nothing secret hidden here so you don&#39;t need to read this. Just a plain ol&#39; ordinary paragraph.
+No secret mafia operations going on here. No coded messages for a secret organization. Nothing at all.</p>
+<pre><code class="language-typescript">import { loadPages } from &quot;./build&quot;;
+import { CONTENT_DIR } from &quot;./util&quot;;
+import fs from &quot;fs&quot;;
+
+async function buildTagTemplates() {
+  const pages = await loadPages(`${CONTENT_DIR}/pages`);
+
+  // Get a list of tags used
+  const tags = pages.reduce((tagList, page) =&gt; {
+    if (page.options.has(&quot;tags&quot;)) {
+      (page.options.get(&quot;tags&quot;) as string[]).map((tag) =&gt; {
+        if (!tagList.includes(tag)) tagList.push(tag);
+      });
+    }
+
+    return tagList;
+  }, []);
+
+  await Promise.all(tags.map(buildTagTemplate));
+}</code></pre>
+
+            </div>
+        </div>
+        <footer>
+    <div class="social-icons">
+        <a href="https://github.com/rafraser" aria-label="Github"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/robert-a-fraser/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p>Built with &hearts; by Robert A Fraser</p>
+</footer>
+    </body>
+</html>
