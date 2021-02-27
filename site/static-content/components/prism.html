@@ -1,0 +1,6 @@
+{%- if page.prism %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js" crossorigin="anonymous"></script>
+{%- for language in page.prism %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism-{{ language }}.min.js" crossorigin="anonymous"></script>
+{%- endfor %}
+{%- endif %}
