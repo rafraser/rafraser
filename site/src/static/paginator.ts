@@ -39,11 +39,12 @@ async function paginate(page: Page, pages: Page[]) {
     const paginator_data = {
       pages: pageFiles.map(pageToSettingsObject),
       currentPage: page_number,
-      maxPage: maxPage
+      maxPage: maxPage,
+      path: page.path
     } as any
 
     // Links to next and previous pages
-    if(page_number != 0) {
+    if(page_number != 1) {
       paginator_data.prevPage = path.join(page.path, (page_number - 1).toString())
     } else if(page_number != maxPage) {
       paginator_data.nextPage = path.join(page.path, (page_number + 1).toString())
