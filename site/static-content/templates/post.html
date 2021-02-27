@@ -10,16 +10,9 @@
     <body>
         {% include "header" %}
         <div class="container">
-            <div class="container-head">
-                <h1>{{ page.title }}</h1>
-                {%- if page.subtext %}
-                <p>{{ page.subtext }}</p>
-                {%- endif %}
+            {% assign view = page %}
+            {% include "post_head" %}
 
-                {%- for tag in page.tags %}
-                <div class="tag-chip"> {{ tag }} </div>
-                {%- endfor %}
-            </div>
             <div class="container-content">
                 {{ page.content }}
             </div>

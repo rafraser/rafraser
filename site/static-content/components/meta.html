@@ -3,9 +3,13 @@
 
 <title>{{ page.title }}</title>
 <meta name="description" content="{{ page.subtext | "" }}">
+<meta name="theme-color" content="#4834d4">
 
 <meta property="og:title" content="{{ page.title }}"/>
 <meta property="og:type" content="article"/>
 <meta property="og:description" content="{{ page.subtext }}"/>
+<meta property="og:image" content="https://robertafraser.com/assets/img/thumbnails/{{ page.thumbnail | default: "default" }}.png"/>
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="450">
 
-<script src="https://kit.fontawesome.com/df04d766c5.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/df04d766c5.js" crossorigin="anonymous" defer></script>

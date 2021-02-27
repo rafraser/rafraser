@@ -1,0 +1,17 @@
+<div class="paginate-controls">
+    {%- if paginate.prevPage %}
+    <a href="{{ content_dir }}{{ paginate.prevPage }}" aria-label="Previous Page" class="arrow"><i class="fas fa-angle-left"></i></a>
+    {%- endif %}
+
+    {%- for i in (1..paginate.maxPage) %}
+    {%- if i == paginate.currentPage %}
+    <a href="#" class="current-page">{{ i }}</a>
+    {%- else %}
+    <a href="{{ content_dir }}{{ paginate.path }}/{{ i }}">{{ i }}</a>
+    {%- endif %}
+    {% endfor %}
+
+    {%- if paginate.nextPage %}
+    <a href="{{ content_dir }}{{ paginate.nextPage }}" aria-label="Next Page" class="arrow"><i class="fas fa-angle-right"></i></a>
+    {%- endif %}
+</div>

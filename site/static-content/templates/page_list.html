@@ -7,17 +7,22 @@
     <body>
         {% include "header" %}
         <div class="container">
-            <div>
-                {{ content }}
+            <div class="paginate-description">
+                <div class="post-head-left">
+                    <h1>{{ page.title }}</h1>
+                    {{ page.content }}
+                </div>
+                <div class="post-head-right">
+                </div>
             </div>
-            <div>
-                {%- for post in paginate.pages %}
-                <section>
-                    <a href="{{ content_dir }}{{ post.path }}.html">{{ post.title }}</a>
-                    <p>{{ post.subtext | default: "" }}</p>
-                </section>
+
+            <div class="paginate-posts">
+                {%- for view in paginate.pages %}
+                {% include "post_head_page" %}
                 {% endfor %}
             </div>
+
+            {% include "paginate_controls" %}
         </div>
         {% include "footer" %}
     </body>

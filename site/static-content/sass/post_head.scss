@@ -1,0 +1,40 @@
+@use 'shared';
+
+.post-head,
+.page-post,
+.paginate-description {
+  display: flex;
+  padding-bottom: 12px;
+
+  .post-head-left {
+    flex: 65%;
+    padding-right: 10%;
+
+    h1,
+    h2 {
+      margin: 4px 0;
+    }
+
+    p {
+      font-size: 24px;
+      margin: 0;
+      margin-bottom: 6px;
+    }
+
+    i {
+      width: 24px;
+      margin-bottom: 6px;
+    }
+  }
+
+  .post-head-right {
+    flex: 35%;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+    }
+  }
+}

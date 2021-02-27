@@ -1,0 +1,31 @@
+<div class="page-post">
+    <div class="post-head-left">
+        <a class="post-title-link" href="{{ content_dir }}{{ view.path }}.html">{{ view.title }}</a>
+        {%- if view.subtext %}
+            <p>{{ view.subtext }}</p>
+        {%- endif %}
+
+        {%- if view.date %}
+        <i class="fas fa-calendar-alt"></i>
+        <span>February 27th, 2021</span><br>
+        {%- endif %}
+
+        {%- if view.repository %}
+        <i class="fab fa-{{ view.repository.icon | default: "github" }}"></i>
+        <a href="{{ view.repository.url }}">{{ view.repository.display }}</a><br>
+        {%- endif %}
+
+        {%- if view.tags %}
+        <i class="fas fa-tag"></i>
+        {%- for tag in view.tags %}
+        <a href="../../tag/{{ tag }}">{{ tag }}</a>
+        {%- endfor %}
+        <br>
+        {%- endif %}
+    </div>
+    <div class="post-head-right">
+        <a class="post-title-link" href="{{ content_dir }}{{ view.path }}.html" aria-label="{{ view.title }}">
+        <img width="800" height="450" alt="Thumbnail" src="{{ content_dir }}\assets\img\thumbnails\{{ view.thumbnail | default: "default" }}.png"></img>
+        </a>
+    </div>
+</div>

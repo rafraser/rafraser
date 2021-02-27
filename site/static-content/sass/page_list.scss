@@ -1,1 +1,42 @@
 @use 'shared';
+@use 'post_head';
+@use 'paginate_controls';
+
+.container {
+  position: relative;
+
+  .paginate-description {
+    h1 {
+      font-size: 48px;
+    }
+
+    border-bottom: 1px solid shared.$color-footer2;
+    margin-bottom: 12px;
+  }
+
+  .paginate-posts {
+    h2,
+    .post-title-link {
+      font-size: 32px;
+      color: shared.$color-text;
+    }
+
+    .page-post {
+      padding: 24px;
+      margin: 0 auto;
+      margin-bottom: 48px;
+
+      height: 240px;
+      overflow-y: hidden;
+    }
+
+    min-height: (240px + 48px) * 5;
+  }
+
+  .paginate-controls {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

@@ -1,0 +1,26 @@
+@use 'shared';
+
+.paginate-controls {
+  a {
+    display: inline-block;
+    vertical-align: middle;
+    color: white;
+
+    text-align: center;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 100%;
+    background-color: shared.$color-accent;
+
+    &.current-page {
+      text-decoration: underline;
+    }
+
+    &.arrow {
+      i {
+        margin-top: 6px;
+      }
+    }
+  }
+}
