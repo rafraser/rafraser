@@ -72,11 +72,8 @@ async function parseFile(filepath: string, name: string, contentParser: ParserFu
 
 export function pageToSettingsObject(page: Page): object {
     const obj : Record<string, any> = {}
-    console.log(page.options)
-
     for (const key of Object.keys(page.options)) {
         obj[key] = page.options[key]
-        console.log("Iterate:", key)
     }
     obj["content"] = page.content
     obj["path"] = page.path
