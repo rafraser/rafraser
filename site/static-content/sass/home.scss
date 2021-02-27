@@ -2,13 +2,12 @@
 @use 'post_head';
 
 .container {
-  position: absolute;
-  margin: 0;
-
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   font-size: 20px;
+
+  @media screen and (max-width: shared.$small-width) {
+    margin: 0;
+    font-size: 16px;
+  }
 
   .social-icons {
     display: flex;
@@ -60,5 +59,15 @@
     font-size: 64px;
     color: shared.$color-accent;
     margin: 0 8px;
+  }
+
+  @media screen and (max-width: shared.$small-width) {
+    font-size: 28px;
+
+    .title-initial {
+      font-size: 32px;
+      color: shared.$color-accent;
+      margin: 0 8px;
+    }
   }
 }

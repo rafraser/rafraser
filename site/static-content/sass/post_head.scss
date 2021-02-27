@@ -37,4 +37,18 @@
       border-radius: 16px;
     }
   }
+
+  @media screen and (max-width: shared.$small-width) {
+    flex-direction: column-reverse;
+
+    .post-head-left {
+      flex: 100%;
+      padding-right: 0;
+    }
+
+    .post-head-right {
+      flex: 100%;
+      margin-bottom: 16px;
+    }
+  }
 }

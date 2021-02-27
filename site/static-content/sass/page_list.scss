@@ -29,8 +29,20 @@
       height: 240px;
       overflow-y: hidden;
     }
-
     min-height: (240px + 48px) * 5;
+
+    @media screen and (max-width: shared.$small-width) {
+      min-height: unset;
+
+      .page-post {
+        padding: 24px;
+        margin: 0 auto;
+        margin-bottom: 48px;
+
+        height: unset;
+        overflow-y: unset;
+      }
+    }
   }
 
   .paginate-controls {

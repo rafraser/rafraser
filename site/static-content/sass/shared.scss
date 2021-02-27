@@ -12,6 +12,8 @@ $shadow-1: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 $shadow-2: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 $shadow-3: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 
+$small-width: 600px;
+
 @font-face {
   font-family: "LemonMilk";
   src: url("../font/LEMONMILK.otf") format("opentype");
@@ -27,7 +29,6 @@ body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
-  min-width: 600px;
 }
 
 footer {
@@ -76,8 +77,8 @@ header {
 
   .header-title {
     display: inline-flex;
-    height: 100%;
     align-items: center;
+    height: 64px;
 
     vertical-align: middle;
     margin-left: 12px;
@@ -97,7 +98,7 @@ header {
   .header-links {
     float: right;
     display: inline-flex;
-    height: 100%;
+    height: 64px;
     align-items: center;
 
     vertical-align: middle;
@@ -117,13 +118,30 @@ header {
       }
     }
   }
+
+  @media screen and (max-width: $small-width) {
+    height: 128px;
+
+    .header-links {
+      float: left;
+      margin-right: 0;
+      margin-left: 12px;
+    }
+  }
 }
 
 .container {
   background-color: $color-foreground;
+
   width: 60%;
   min-width: 600px;
   max-width: 960px;
+
+  @media screen and (max-width: $small-width) {
+    width: 100%;
+    min-width: unset;
+    max-width: unset;
+  }
 
   min-height: 80vh;
 
