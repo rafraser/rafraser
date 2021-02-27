@@ -18,7 +18,6 @@ async function fetchTemplate(template: string): Promise<string> {
         //  - we only really need the contents, nothing else fancy going on
         //  - this way we can memoize the component loads for zoom zoom speeds
         templateContent = await replaceAsync(templateContent, /{% include [\"\'](.*)[\"\'] %}/gm, async (_, group) => {
-            console.log(group)
             return await fetchComponent(group)
         })
         templates.set(template, templateContent)

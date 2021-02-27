@@ -4,12 +4,12 @@ import { applyTemplate } from "./templates"
 import path from "path"
 
 export async function applyPaginator(page: Page, pages: Page[]) {
-  const paginator = page.options.get("paginator")
+  const paginator = page.options.paginator
   if(!paginator) return
 
   // Filter to pages within a directory
-  if(paginator.has("directory")) {
-    const directory = paginator.get("directory")
+  if(paginator.directory) {
+    const directory = paginator.directory
     pages = pages.filter(page => {
       const topLevel = path.basename(path.dirname(page.path))
       return topLevel == directory
@@ -17,10 +17,10 @@ export async function applyPaginator(page: Page, pages: Page[]) {
   }
 
   // Filter by tag
-  if(paginator.has("tag")) {
-    const tag = paginator.get("tag")
+  if(paginator.tag) {
+    const tag = paginator.tag
     pages = pages.filter(page => {
-      const tags = (page.options.get("tags") || []) as string[]
+      const tags = (page.options.tags || []) as string[]
       return tags.includes(tag)
     })
   }
@@ -31,7 +31,7 @@ export async function applyPaginator(page: Page, pages: Page[]) {
 
 async function paginate(page: Page, pages: Page[]) {
   const maxPage = Math.ceil(pages.length / PAGE_SIZE)
-  const template = page.options.get("template") || DEFAULT_TEMPLATE
+  const template = page.options.template || DEFAULT_TEMPLATE
   const promises = []
 
   for(let page_number=1; page_number <= maxPage; page_number++) {

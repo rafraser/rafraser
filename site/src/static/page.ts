@@ -7,7 +7,7 @@ import path from "path"
 import readline from "readline"
 
 export class Page {
-    options: Map<string, any>
+    options: Record<string, any>
     path: string
     content: string
 }
@@ -34,7 +34,7 @@ async function parseFile(filepath: string, name: string, contentParser: ParserFu
     })
 
     let rawOptions = ""
-    let options : Map<string, any> = new Map()
+    let options : Record<string, any> = {}
     let content = ""
     let firstline = true
     let readingHeader = false
@@ -56,12 +56,12 @@ async function parseFile(filepath: string, name: string, contentParser: ParserFu
 
     await once(rl, "close")
     try {
-        options = YAML.parse(rawOptions, {mapAsMap: true})
+        options = YAML.parse(rawOptions)
     } catch (err) {
         console.log(err)
         console.log(rawOptions)
     }
-    if(!options) options = new Map()
+    if(!options) options = {}
 
     return {
         path: name,
@@ -72,7 +72,12 @@ async function parseFile(filepath: string, name: string, contentParser: ParserFu
 
 export function pageToSettingsObject(page: Page): object {
     const obj : Record<string, any> = {}
-    page.options.forEach((value, key) => obj[key] = value)
+    console.log(page.options)
+
+    for (const key of Object.keys(page.options)) {
+        obj[key] = page.options[key]
+        console.log("Iterate:", key)
+    }
     obj["content"] = page.content
     obj["path"] = page.path
     return obj

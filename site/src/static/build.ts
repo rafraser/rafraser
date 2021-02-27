@@ -30,10 +30,10 @@ async function buildPagesInDirectory(directory: string) {
 }
 
 async function buildPage(page: Page, pages: Page[]) {
-  if(page.options.get("paginator")) {
+  if(page.options.paginator) {
     await applyPaginator(page, pages)
   } else {
-    await applyPageTemplate(page.options.get("template") || DEFAULT_TEMPLATE, page)
+    await applyPageTemplate(page.options.template || DEFAULT_TEMPLATE, page)
   }
 }
 

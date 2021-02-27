@@ -7,8 +7,8 @@ async function buildTagTemplates() {
 
   // Get a list of tags used
   const tags = pages.reduce((tagList, page) => {
-    if(page.options.has("tags")) {
-      (page.options.get("tags") as string[]).map(tag => {
+    if(page.options.tags) {
+      (page.options.tags as string[]).map(tag => {
         if (!tagList.includes(tag)) tagList.push(tag)
       })
     }
