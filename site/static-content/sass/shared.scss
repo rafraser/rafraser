@@ -1,0 +1,95 @@
+$color-background: #f1f2f6;
+$color-foreground: #ffffff;
+
+$color-text: #3a3a3a;
+
+$color-footer1: #dfe4ea;
+$color-footer2: #ced6e0;
+
+$color-accent: #4834d4;
+
+$shadow-1: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+$shadow-2: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+$shadow-3: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+
+@font-face {
+  font-family: "LemonMilk";
+  src: url("../font/LEMONMILK.otf") format("opentype");
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $color-background;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  min-width: 600px;
+}
+
+footer {
+  position: relative;
+  z-index: 1;
+  background-color: $color-footer2;
+  text-align: center;
+
+  width: 100%;
+  padding-top: 3vw;
+  padding-bottom: 3vw;
+
+  clip-path: polygon(0 3vw, 100% 0, 100% 100%, 0 100%);
+
+  .social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    a {
+      height: 48px;
+      width: 48px;
+      margin: 16px;
+
+      border-radius: 50%;
+      color: white;
+      background: $color-accent;
+      font-size: 28px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+header {
+  height: 64px;
+  width: 100%;
+  background-color: $color-foreground;
+
+  .header-title {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    vertical-align: middle;
+    margin-left: 12px;
+
+    text-decoration: none;
+    color: #3a3a3a;
+    font-family: "LemonMilk", sans-serif;
+    font-size: 32px;
+
+    .title-initial {
+      font-size: 48px;
+      color: $color-accent;
+      margin: 0 8px;
+    }
+  }
+}

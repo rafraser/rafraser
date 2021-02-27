@@ -1,0 +1,6 @@
+@use 'shared';
+
+.tag-chip {
+  background-color: shared.$color-background;
+  display: inline-block;
+}
