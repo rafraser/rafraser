@@ -20,7 +20,8 @@ async function buildTagTemplates() {
 }
 
 async function buildTagTemplate(tag: string) {
-  const outputPath = `${CONTENT_DIR}/pages/tag/${tag.toLowerCase()}.md`
+  const tagPath = tag.toLowerCase().replace(" ", "-")
+  const outputPath = `${CONTENT_DIR}/pages/tag/${tagPath}.md`
   try {
     await fs.promises.access(outputPath, fs.constants.F_OK)
     return
