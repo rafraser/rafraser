@@ -5,7 +5,7 @@ template: page_list
 paginator:
   directory: post
   tag: Elm
-thumbnail: elm225
+thumbnail: elm
 ---
 
 Insert tag description here

@@ -5,7 +5,7 @@ template: page_list
 paginator:
   directory: post
   tag: Python
-thumbnail: python225
+thumbnail: python
 ---
 
 Insert tag description here

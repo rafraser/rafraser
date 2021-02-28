@@ -7,7 +7,7 @@ tags:
   - Webscraping
 prism:
   - python
-thumbnail: python225
+thumbnail: python
 date: February 28, 2021
 ---
 

@@ -5,7 +5,7 @@ template: page_list
 paginator:
   directory: post
   tag: Typescript
-thumbnail: typescript225
+thumbnail: typescript
 ---
 
 Insert tag description here
