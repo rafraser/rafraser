@@ -7,5 +7,3 @@ paginator:
   tag: Horizon
 thumbnail: horizon
 ---
-
-Insert tag description here

@@ -6,5 +6,3 @@ paginator:
   directory: post
   tag: RegEx
 ---
-
-Insert tag description here

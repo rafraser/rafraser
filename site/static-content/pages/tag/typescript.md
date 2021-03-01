@@ -7,5 +7,3 @@ paginator:
   tag: Typescript
 thumbnail: typescript
 ---
-
-Insert tag description here

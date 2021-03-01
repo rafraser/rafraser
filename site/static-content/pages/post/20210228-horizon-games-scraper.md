@@ -2,7 +2,6 @@
 title: Horizon - Scrapers
 subtext: Scraping Steam game ownership info
 tags:
-  - Medium Length
   - Python
   - RegEx
   - Webscraping

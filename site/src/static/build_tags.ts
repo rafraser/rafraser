@@ -40,7 +40,6 @@ paginator:
   tag: ${tag}
 ---
 
-Insert tag description here
 `
 }
 

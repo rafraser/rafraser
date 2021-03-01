@@ -7,5 +7,3 @@ paginator:
   tag: Python
 thumbnail: python
 ---
-
-Insert tag description here

@@ -6,4 +6,4 @@ paginator:
   directory: post
 ---
 
-I'm trying to write more about stuff that I do. Hopefully some of it is interesting!
+I work on a lot of (hopefully) cool projects in my limited free time. Recently, I've started writing about some of them!

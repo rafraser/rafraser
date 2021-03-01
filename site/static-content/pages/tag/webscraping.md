@@ -7,5 +7,3 @@ paginator:
   tag: Webscraping
 thumbnail: downarrow
 ---
-
-Insert tag description here
