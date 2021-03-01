@@ -2,25 +2,27 @@
     <div class="post-head-left">
         <h1>{{ view.title }}</h1>
         {%- if view.subtext %}
-            <p>{{ view.subtext }}</p>
+        <p class="subtitle">{{ view.subtext }}</p>
         {%- endif %}
 
         {%- if view.date %}
-        <i class="fas fa-calendar-alt"></i>
-        <span>February 27th, 2021</span><br>
+        <i class="fas fa-calendar-alt"></i><div class="icon-text">
+        <p>{{ view.date }}</p>
+        </div><br>
         {%- endif %}
 
         {%- if view.repository %}
-        <i class="fab fa-{{ view.repository.icon | default: "github" }}"></i>
-        <a href="{{ view.repository.url }}">{{ view.repository.display }}</a><br>
+        <i class="fab fa-{{ view.repository.icon | default: "github" }}"></i><div class="icon-text">
+        <a href="{{ view.repository.url }}">{{ view.repository.display }}</a>
+        </div><br>
         {%- endif %}
 
         {%- if view.tags %}
-        <i class="fas fa-tag"></i>
+        <i class="fas fa-tag"></i><div class="icon-text">
         {%- for tag in view.tags %}
-        <a href="../tag/{{ tag | downcase | replace: " ", "-" }}">{{ tag }}</a>
+        <a href="../../tag/{{ tag | downcase | replace: " ", "-" }}">{{ tag }}</a>
         {%- endfor %}
-        <br>
+        </div><br>
         {%- endif %}
     </div>
     <div class="post-head-right">

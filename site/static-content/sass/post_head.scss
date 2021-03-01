@@ -16,14 +16,30 @@
     }
 
     p {
-      font-size: 24px;
       margin: 0;
       margin-bottom: 6px;
+
+      &.subtitle {
+        font-size: 20px;
+      }
     }
 
     i {
       width: 24px;
       margin-bottom: 6px;
+      display: inline-block;
+    }
+
+    .icon-text {
+      display: inline-block;
+      vertical-align: top;
+      width: calc(100% - 40px);
+      margin-bottom: 4px;
+
+      p {
+        margin: 0;
+        font-size: 18px;
+      }
     }
   }
 
@@ -50,5 +66,15 @@
       flex: 100%;
       margin-bottom: 16px;
     }
+  }
+}
+
+.paginate-description {
+  .post-head-left {
+    flex: 80%;
+  }
+
+  .post-head-right {
+    flex: 20%;
   }
 }
