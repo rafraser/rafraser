@@ -5,6 +5,7 @@ template: page_list
 paginator:
   directory: post
   tag: Webscraping
+thumbnail: downarrow
 ---
 
 Insert tag description here

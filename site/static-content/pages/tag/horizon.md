@@ -5,6 +5,7 @@ template: page_list
 paginator:
   directory: post
   tag: Horizon
+thumbnail: horizon
 ---
 
 Insert tag description here
