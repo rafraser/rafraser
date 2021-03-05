@@ -51,6 +51,10 @@
       width: 100%;
       height: auto;
       border-radius: 16px;
+
+      @media (prefers-color-scheme: dark) {
+        filter: brightness(0.8);
+      }
     }
   }
 

@@ -11,6 +11,10 @@
     --color-footer: #222f3e;
     --color-text: #f1f2f6;
     --color-accent: #45aaf2;
+
+    img {
+      filter: brightness(0.85) contrast(1.15);
+    }
   }
 }
 
