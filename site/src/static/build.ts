@@ -37,13 +37,7 @@ async function buildPage(page: Page, pages: Page[]) {
   }
 }
 
-async function copyAssets() {
-  const cp = spawn("cp", ["-a", `${CONTENT_DIR}/assets/.`, `${OUTPUT_DIR}/assets/`])
-  cp.on("error", err => console.error(err))
-}
-
 async function buildStaticSite() {
-  await copyAssets()
   await buildPagesInDirectory(`${CONTENT_DIR}/pages`)
 }
 

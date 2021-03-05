@@ -7,9 +7,10 @@
     "build": "tsc && npm run lint",
     "lint": "tsc --noEmit",
     "static-build": "npm run static-sass & node dist/static/build.js",
+    "static-copy": "cp -a static-content/assets/. static-build/assets/",
     "static-clean": "rm -rf static-build",
     "static-sass": "sass static-content/sass:static-build/assets/style",
-    "static-all": "npm run static-clean && npm run static-build",
+    "static-all": "npm run static-clean && npm run static-build && npm run static-copy",
     "all": "tsc && npm run static-all",
     "serve": "node dist/server.js",
     "build-tag-templates": "node dist/static/build_tags"
