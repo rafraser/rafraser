@@ -4,6 +4,14 @@
   --color-footer: #ced6e0;
   --color-text: #3a3a3a;
   --color-accent: #4834d4;
+
+  @media (prefers-color-scheme: dark) {
+    --color-background: #2f3640;
+    --color-foreground: #353b48;
+    --color-footer: #222f3e;
+    --color-text: #f1f2f6;
+    --color-accent: #45aaf2;
+  }
 }
 
 $shadow-1: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -32,6 +40,7 @@ footer {
   position: relative;
   z-index: 1;
   background-color: var(--color-footer);
+  color: var(--color-text);
   text-align: center;
 
   width: 100%;
@@ -106,7 +115,7 @@ header {
     font-size: 24px;
 
     a {
-      color: #4834d4;
+      color: var(--color-accent);
       text-decoration: none;
       padding: 0 8px;
 
