@@ -1,0 +1,57 @@
+// Light mode (default)
+:root,
+:root[data-force-color-mode="light"] {
+  --color-background: #f1f2f6;
+  --color-foreground: #ffffff;
+  --color-footer: #ced6e0;
+  --color-text: #3a3a3a;
+
+  --accent-purple: #4834d4;
+  --accent-blue: #1b9cfc;
+  --accent-pink: #be2edd;
+  --color-accent: var(--accent-purple);
+}
+
+// Dark mode
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #2f3640;
+    --color-foreground: #353b48;
+    --color-footer: #222f3e;
+    --color-text: #f1f2f6;
+
+    --accent-purple: #4834d4;
+    --accent-blue: #1b9cfc;
+    --accent-pink: #be2edd;
+    --color-accent: var(--accent-blue);
+
+    img {
+      filter: brightness(0.85) contrast(1.15);
+    }
+  }
+}
+
+:root[data-force-color-mode="dark"] {
+  --color-background: #2f3640;
+  --color-foreground: #353b48;
+  --color-footer: #222f3e;
+  --color-text: #f1f2f6;
+  --color-accent: #45aaf2;
+
+  img {
+    filter: brightness(0.85) contrast(1.15);
+  }
+}
+
+// Accent color overrides
+:root[data-force-accent-color="purple"] {
+  --color-accent: var(--accent-purple);
+}
+
+:root[data-force-accent-color="blue"] {
+  --color-accent: var(--accent-blue);
+}
+
+:root[data-force-accent-color="pink"] {
+  --color-accent: var(--accent-pink);
+}

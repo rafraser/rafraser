@@ -1,22 +1,4 @@
-:root {
-  --color-background: #f1f2f6;
-  --color-foreground: #ffffff;
-  --color-footer: #ced6e0;
-  --color-text: #3a3a3a;
-  --color-accent: #4834d4;
-
-  @media (prefers-color-scheme: dark) {
-    --color-background: #2f3640;
-    --color-foreground: #353b48;
-    --color-footer: #222f3e;
-    --color-text: #f1f2f6;
-    --color-accent: #45aaf2;
-
-    img {
-      filter: brightness(0.85) contrast(1.15);
-    }
-  }
-}
+@use 'color';
 
 $shadow-1: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 $shadow-2: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
