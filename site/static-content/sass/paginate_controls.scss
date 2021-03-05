@@ -11,7 +11,7 @@
     height: 32px;
     line-height: 32px;
     border-radius: 100%;
-    background-color: shared.$color-accent;
+    background-color: var(--color-accent);
 
     &.current-page {
       text-decoration: underline;

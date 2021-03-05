@@ -10,7 +10,7 @@
       font-size: 48px;
     }
 
-    border-bottom: 1px solid shared.$color-footer2;
+    border-bottom: 1px solid var(--color-footer);
     margin-bottom: 12px;
   }
 
@@ -18,7 +18,7 @@
     h2,
     .post-title-link {
       font-size: 32px;
-      color: shared.$color-text;
+      color: var(--color-text);
     }
 
     .page-post {

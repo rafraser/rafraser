@@ -21,7 +21,7 @@
 
       border-radius: 50%;
       color: white;
-      background: shared.$color-accent;
+      background: var(--color-accent);
       font-size: 40px;
 
       display: flex;
@@ -39,7 +39,7 @@
 
   .post-head {
     margin-bottom: 32px;
-    border-bottom: 1px solid shared.$color-footer1;
+    border-bottom: 1px solid var(--color-footer);
   }
 }
 
@@ -51,13 +51,13 @@
   vertical-align: middle;
 
   text-decoration: none;
-  color: shared.$color-text;
+  color: var(--color-text);
   font-family: "LemonMilk", sans-serif;
   font-size: 48px;
 
   .title-initial {
     font-size: 64px;
-    color: shared.$color-accent;
+    color: var(--color-accent);
     margin: 0 8px;
   }
 
@@ -66,8 +66,6 @@
 
     .title-initial {
       font-size: 32px;
-      color: shared.$color-accent;
-      margin: 0 8px;
     }
   }
 }

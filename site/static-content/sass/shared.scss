@@ -1,17 +1,14 @@
-$color-background: #f1f2f6;
-$color-foreground: #ffffff;
-
-$color-text: #3a3a3a;
-
-$color-footer1: #dfe4ea;
-$color-footer2: #ced6e0;
-
-$color-accent: #4834d4;
+:root {
+  --color-background: #f1f2f6;
+  --color-foreground: #ffffff;
+  --color-footer: #ced6e0;
+  --color-text: #3a3a3a;
+  --color-accent: #4834d4;
+}
 
 $shadow-1: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 $shadow-2: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 $shadow-3: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-
 $small-width: 600px;
 
 @font-face {
@@ -25,7 +22,7 @@ $small-width: 600px;
 }
 
 body {
-  background-color: $color-background;
+  background-color: var(--color-background);
   font-family: sans-serif;
   margin: 0;
   padding: 0;
@@ -34,7 +31,7 @@ body {
 footer {
   position: relative;
   z-index: 1;
-  background-color: $color-footer2;
+  background-color: var(--color-footer);
   text-align: center;
 
   width: 100%;
@@ -55,7 +52,7 @@ footer {
 
       border-radius: 50%;
       color: white;
-      background: $color-accent;
+      background: var(--color-accent);
       font-size: 28px;
 
       display: flex;
@@ -73,7 +70,7 @@ footer {
 header {
   height: 64px;
   width: 100%;
-  background-color: $color-foreground;
+  background-color: var(--color-foreground);
 
   .header-title {
     display: inline-flex;
@@ -84,13 +81,13 @@ header {
     margin-left: 12px;
 
     text-decoration: none;
-    color: $color-text;
+    color: var(--color-text);
     font-family: "LemonMilk", sans-serif;
     font-size: 32px;
 
     .title-initial {
       font-size: 48px;
-      color: $color-accent;
+      color: var(--color-accent);
       margin: 0 8px;
     }
   }
@@ -104,7 +101,7 @@ header {
     vertical-align: middle;
     margin-right: 12px;
 
-    color: $color-text;
+    color: var(--color-text);
     font-family: "LemonMilk", sans-serif;
     font-size: 24px;
 
@@ -131,7 +128,7 @@ header {
 }
 
 .container {
-  background-color: $color-foreground;
+  background-color: var(--color-foreground);
 
   width: 60%;
   min-width: 600px;
@@ -149,7 +146,7 @@ header {
   margin: 50px auto;
 
   font-size: 18px;
-  color: $color-text;
+  color: var(--color-text);
   line-height: 1.25;
 
   h1,
@@ -163,7 +160,7 @@ header {
 
   a {
     text-decoration: none;
-    color: $color-accent;
+    color: var(--color-accent);
     font-weight: bold;
 
     &:hover {
