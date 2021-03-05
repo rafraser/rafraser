@@ -1,0 +1,10 @@
+{
+  "name": "elm-backend-test",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "elm make src/Main.elm --optimize --output=dist/elm.js",
+    "start": "node index.js",
+    "start2": "node -e \"require('./dist/elm.js').Elm.Main.init()\""
+  }
+}
